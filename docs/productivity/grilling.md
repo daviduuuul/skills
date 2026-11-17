@@ -24,7 +24,11 @@ The skill rests on three ideas.
 
 The **design tree** is the model of the subject: decisions with decisions hanging off them. The **frontier** is the set of decisions whose prerequisites are all settled: the only questions the agent can ask yet. A **round** is one frontier, asked in full and answered in full.
 
-Inside a round, every question has a fixed format: numbered and titled behind a `❓`, then the body, then the agent's recommended answer alone on a `➡️` line. This format lets you answer a round by number ("1 yes, 2 the second option, 3 no, here's why") instead of by quoting questions back. The format has one known problem. The recommendation sometimes argues *against* the question as it was worded, so agreeing with the recommendation means answering "no" to the question. When that happens, answer the recommendation and say so.
+Before the first round, the agent reads the open tickets on your issue tracker, listed the way your tracker config says, so the tree starts from the work already filed: a decision an open ticket settles is not asked again, and a question that touches an open ticket names it.
+
+A round goes through the harness's question tool (`AskUserQuestion` in Claude Code): up to four numbered questions per call, each with concrete options and the agent's recommendation first, marked "(Recommended)". A frontier bigger than four takes several calls. Anything too long for the tool (background, trade-offs) is written in chat just above, under the question's number, before the tool opens.
+
+Where the harness has no question tool, the round comes in chat in a fixed format: numbered and titled behind a `❓`, then the body, then the agent's recommended answer alone on a `➡️` line. This format lets you answer a round by number ("1 yes, 2 the second option, 3 no, here's why") instead of by quoting questions back. The chat format has one known problem. The recommendation sometimes argues *against* the question as it was worded, so agreeing with the recommendation means answering "no" to the question. When that happens, answer the recommendation and say so.
 
 The other half of the design is the split between facts and decisions. Facts are the skill's own job. When a frontier question needs something the [environment](https://www.aihero.dev/ai-coding-dictionary/environment) can settle, the agent dispatches a [sub-agent](https://www.aihero.dev/ai-coding-dictionary/subagent) to find out rather than asking you. The round does not wait for that research; only the questions that depend on it wait. Decisions are yours, and the agent must wait for them. An agent running `grilling` that answers its own decisions has broken the skill. The session ends when the frontier is empty. The agent then waits for you to confirm a shared understanding before it acts on what you agreed.
 
@@ -74,7 +78,8 @@ This is a real bug, still unfixed, and users report it across [harnesses](https:
 
 ## It's working if
 
-- A round arrives as a numbered list, each question with its recommendation on a separate `➡️` line, and you can answer the whole round by number.
+- It reads the open tickets before the first question, and no question re-asks what an open ticket already settles.
+- A round arrives in the question tool, at most four numbered questions per call, the recommended option first; any long explanation sits in chat just above. Without a question tool, it arrives as a numbered list with each recommendation on a separate `➡️` line.
 - Nothing in a round needs another question in the same round answered first.
 - Later rounds ask things the first round could not have asked.
 - It goes and looks facts up (reading files, dispatching a sub-agent) rather than asking you something it could have found out.
