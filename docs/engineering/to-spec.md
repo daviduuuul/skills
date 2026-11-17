@@ -29,7 +29,7 @@ So the spec does not validate or decide anything. It records what you decided, i
 
 ## Seams before prose
 
-Before it writes anything, `to-spec` sketches the **seams** where the feature will be tested, and checks them with you. It prefers existing seams to new ones, and picks the highest seam it can. The ideal number of seams for a change is one.
+Before it writes anything, `to-spec` sketches the **seams** where the feature will be tested, and checks them with you through the harness's question tool (`AskUserQuestion` in Claude Code), with the seams laid out in chat just above. It prefers existing seams to new ones, and picks the highest seam it can. The ideal number of seams for a change is one.
 
 Other skills use those agreed seams later. [tdd](https://aihero.dev/skills-tdd) works only at seams you agreed in advance. [code-review](https://aihero.dev/skills-code-review) reviews the diff against the spec, so a seam nobody agreed to shows up as a review finding. Both connections go through this document. That is why you should take the seam conversation seriously here, and not leave it for implementation.
 
@@ -57,7 +57,7 @@ Nothing keeps it in sync. In practice it is a snapshot of what you knew at that 
 Less well, and this is a known limitation. The template relies heavily on user stories, which do not fit architectural work. You end up writing stories nobody asked for around decisions that are really about interfaces and invariants. Use the implementation-decisions and testing-decisions sections instead. Record the lasting architectural decisions as ADRs through [grill-with-docs](https://aihero.dev/skills-grill-with-docs), not in the spec.
 
 **Will it check the tracker for related work, or cite the ADRs it's respecting?**
-No to both. It reads and follows the ADRs for the area it touches, but it does not link them. It also does not search the tracker for overlapping issues before it writes, so a spec can duplicate work that someone already filed, and nothing warns you. If the area is busy, search the tracker yourself first.
+The tracker, yes; the ADRs, no. It reads the open tickets before it writes, listed the way your tracker config says, and the spec carries an **Open Tickets** section naming each open ticket it touches and what happens to it: superseded, narrowed, blocking or blocked, or unchanged. It reads and follows the ADRs for the area it touches, but it does not link them.
 
 **`/to-tickets` couldn't read my spec: it kept truncating.**
 A tracker issue may not return a very large spec in full, and there is no local copy to use instead. To fix this, do not [clear](https://www.aihero.dev/ai-coding-dictionary/clearing) or [compact](https://www.aihero.dev/ai-coding-dictionary/compaction) between `/to-spec` and `/to-tickets`. Run them in the same window, and `/to-tickets` never has to fetch the spec again.
@@ -65,7 +65,8 @@ A tracker issue may not return a very large spec in full, and there is no local 
 ## It's working if
 
 - It starts writing instead of asking you a new round of questions.
-- It shows you the seams before it writes, and proposes as few as it can.
+- It shows you the seams before it writes, asks about them in the question tool, and proposes as few as it can.
+- The Open Tickets section names every open ticket the spec touches, or says none.
 - It uses your project's nouns, not generic product-management boilerplate.
 - You remember making every decision in it. It invented nothing to fill a section.
 - The out-of-scope section lists real things. The things you refused are usually the most useful lines on the page.

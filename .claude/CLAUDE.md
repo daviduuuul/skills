@@ -7,10 +7,21 @@ Questo è il fork di `mattpocock/skills` che Davide usa come plugin `mattpocock-
   `implement`, `retro`, `triage`, `improve-codebase-architecture`, `teach`, `setup-matt-pocock-skills` (niente
   `disable-model-invocation` né `policy` in `agents/openai.yaml`). Le altre restano user-invoked come da Matt:
   «controllo resta a me». Cambiare l'invocazione di una skill si fa solo col sì di Davide.
+- `chief-of-staff`, che Matt tiene in `in-progress/`, qui sta in `engineering/`, promossa e user-invoked
+  (daviduuuul/home#238): un merge di Matt che la cambia in `in-progress/` si riporta in `engineering/chief-of-staff/`.
+- `grilling`, `to-spec`, `to-tickets` e `chief-of-staff` fanno le domande nella finestra dell'harness
+  (`AskUserQuestion`), al massimo quattro per volta, la consigliata per prima: divergono apposta da
+  `.out-of-scope/native-question-tool.md` e `question-limits.md` (daviduuuul/home#235). Al merge di Matt vince questo.
+- `chief-of-staff` è scritta per la casa: la memoria è `~/home/memoria` col suo `MEMORY.md` (niente wiki), le regole
+  nei `CLAUDE.md`, le ricerche in `~/home/docs/ricerche/`, le procedure nelle altre skill del plugin. Al merge di Matt
+  vince la nostra.
 - Ogni modifica nostra alza la versione in `.claude-plugin/plugin.json` col suffisso `-davide.N` (es. `1.3.2-davide.2`):
   Claude Code tiene la cache per versione, e senza il salto i PC restano sulla copia vecchia.
 - Gli aggiornamenti di Matt entrano con `git fetch upstream && git merge upstream/main`, quando Davide lo chiede; nei
   conflitti vince la nostra modifica, poi si rifà lo sblocco sulle skill nuove e si alza la versione.
+- Queste istruzioni stanno in `.claude/CLAUDE.md` (`AGENTS.md` ci punta), non alla radice: il plugin è il repo intero,
+  e un CLAUDE.md alla radice ci finirebbe dentro e farebbe fallire `claude plugin validate <dir> --strict`. Se un
+  merge di Matt riporta un `CLAUDE.md` alla radice, le sue modifiche passano qui e quello si toglie.
 - Il ramo è `main`, su `origin` (`daviduuuul/skills`). Il resto di questo file sono le regole di Matt, che valgono.
 
 Skills are organized into bucket folders under `skills/`:

@@ -28,7 +28,18 @@ A **horizontal** slice ships one layer of the change. Nothing works until every 
 
 This is the rule people break most often. One team ran a 26-ticket stack sliced by layer (corpus, producer, aggregator, selector) and got roughly twenty agent runs per closed ticket, about three quarters of them rework. Their own post-mortem traced every failure class back to the horizontal slicing rather than to the implementations.
 
-Two things happen before anything is published. `to-tickets` looks for prefactoring (the principle "make the change easy, then make the easy change") and orders that work first. Then it presents the breakdown as a numbered list and quizzes you on it: is the granularity right, are the blocking edges real, should anything merge or split. Nothing reaches the tracker until you approve, and that quiz is the place to push back.
+Two things happen before anything is published. `to-tickets` looks for prefactoring (the principle "make the change easy, then make the easy change") and orders that work first. Then it presents the breakdown as a numbered list and quizzes you on it through the harness's question tool (`AskUserQuestion` in Claude Code): is the granularity right, are the blocking edges real, should anything merge or split, are the relations to the open tickets right. Once you approve, it shows the full text of every ticket before publishing. Nothing reaches the tracker until you approve, and that quiz is the place to push back.
+
+## Open tickets
+
+`to-tickets` reads the open tickets before it slices, listed the way your tracker config says, so new work does not pile up beside old work. Each new ticket carries one **relation** to them:
+
+- **New**: nothing open covers it.
+- **Replaces #N**: it delivers everything #N was for.
+- **Joins #N**: it belongs to #N's deliverable and session, so it becomes checkboxes on #N rather than a ticket.
+- **Blocked by #N**: it needs open #N first, as a native blocking edge.
+
+Under the list come the open tickets it touches, each with an outcome: **closed as superseded** (a comment links the replacement), **narrowed** (a comment says what left and where it went), or **unchanged**. You approve new and old in the same quiz, and the skill touches an existing ticket, the parent included, only as approved there.
 
 ## Blocking edges
 
@@ -82,7 +93,9 @@ The skill stops at the artifact, and there is no auto-dispatch mode. Dispatch is
 ## It's working if
 
 - Every ticket has an answer to "what can I demo when this is done?", and the answer is behaviour, not a layer.
-- The list comes back to you numbered, with a "Blocked by" line on each, before anything is published.
+- The list comes back to you numbered, with a relation and a "Blocked by" line on each, and the touched open tickets with their outcomes below, before anything is published.
+- You see the full text of every ticket before it is published.
+- No open ticket was closed, edited, or commented on unless the quiz approved it.
 - The ticket at the top has no blockers and can be started immediately.
 - Nothing in a ticket body is a file path or a line number, except a snippet a prototype produced.
 - Each ticket reads like something a fresh session could finish without you in the room.
