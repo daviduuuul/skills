@@ -1,3 +1,17 @@
+# Il fork di Davide
+
+Questo è il fork di `mattpocock/skills` che Davide usa come plugin `mattpocock-skills@mattpocock` (la fonte in
+`~/home/config/settings.json`, `extraKnownMarketplaces.mattpocock`). Le differenze da Matt:
+
+- Tutte le skill promosse (`engineering/`, `productivity/`) sono model-invoked: niente `disable-model-invocation` né
+  `policy` in `agents/openai.yaml`, perché Davide vuole che Claude le lanci da sé col Skill tool. Le regole di Matt qui
+  sotto su user-invoked valgono per le skill nuove di Matt, non per le nostre.
+- Ogni modifica nostra alza la versione in `.claude-plugin/plugin.json` col suffisso `-davide.N` (es. `1.3.2-davide.2`):
+  Claude Code tiene la cache per versione, e senza il salto i PC restano sulla copia vecchia.
+- Gli aggiornamenti di Matt entrano con `git fetch upstream && git merge upstream/main`, quando Davide lo chiede; nei
+  conflitti vince la nostra modifica, poi si rifà lo sblocco sulle skill nuove e si alza la versione.
+- Il ramo è `main`, su `origin` (`daviduuuul/skills`). Il resto di questo file sono le regole di Matt, che valgono.
+
 Skills are organized into bucket folders under `skills/`:
 
 - `engineering/`: daily code work
