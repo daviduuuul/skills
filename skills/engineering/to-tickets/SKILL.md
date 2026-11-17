@@ -16,6 +16,8 @@ The issue tracker and triage label vocabulary should have been provided to you. 
 
 Work from whatever is already in the conversation context. If the user passes a reference (a spec path, an issue number or URL) as an argument, fetch it and read its full body and comments.
 
+Read the open tickets on the tracker, listing them the way the tracker's doc says. You slice against them: a new ticket must not duplicate one that is already open.
+
 ### 2. Explore the codebase (optional)
 
 If you have not already explored the codebase, do so to understand the current state of the code. Ticket titles and descriptions should use the project's domain glossary vocabulary, and respect ADRs in the area you're touching.
@@ -37,23 +39,42 @@ Break the work into **tracer bullet** tickets.
 
 Give each ticket its **blocking edges**: the other tickets that must complete before it can start. A ticket with no blockers can start immediately.
 
+Give each ticket its **relation** to the open tickets, one of four:
+
+- **New**: no open ticket covers any of it.
+- **Replaces #N**: it delivers everything #N was for, so #N closes as superseded.
+- **Joins #N**: it belongs to #N's deliverable and fits #N's session, so it becomes checkboxes on #N instead of a ticket of its own.
+- **Blocked by #N**: it is new, but needs open #N done first; #N becomes a native blocking edge.
+
+Then list the **touched** open tickets, each with one outcome:
+
+- **Closed as superseded**: a comment linking the ticket that replaces it, then close.
+- **Narrowed**: a comment saying what left it and which ticket it went to.
+- **Unchanged**: it stays as it is (a blocker, or a parent that only gains sub-issues).
+
 **Wide refactors are the exception to vertical slicing.** A **wide refactor** is one mechanical change (rename a column, retype a shared symbol) whose **blast radius** fans across the whole codebase, so a single edit breaks thousands of call sites at once and no vertical slice can land green. Don't force it into a tracer bullet; sequence it as **expand–contract**. First expand: add the new form beside the old so nothing breaks. Then migrate the call sites over in batches sized by blast radius (per package, per directory), each batch its own ticket blocked by the expand, keeping CI green batch to batch because the old form still exists. Finally contract: delete the old form once no caller remains, in a ticket blocked by every migrate batch. When even the batches can't stay green alone, keep the sequence but let them share an integration branch that all block a final integrate-and-verify ticket; green is promised only there.
 
 ### 4. Quiz the user
 
-Present the proposed breakdown as a numbered list. For each ticket, show:
+Present the proposed breakdown in chat as a numbered list. For each ticket, show:
 
 - **Title**: short descriptive name
+- **Relation**: new, replaces #N, joins #N, or blocked by #N
 - **Blocked by**: which other tickets (if any) must complete first
 - **What it delivers**: the end-to-end behaviour this ticket makes work
 
-Ask the user:
+Below it, list the touched open tickets, each with its outcome.
+
+Then ask through the harness's question tool (`AskUserQuestion` in Claude Code), at most four questions per call, your recommended option first, its label ending in "(Recommended)" in the user's language:
 
 - Does the granularity feel right? (too coarse / too fine)
 - Are the blocking edges correct: does each ticket only depend on tickets that genuinely gate it?
 - Should any tickets be merged or split further?
+- Are the relations and the outcomes for the open tickets right?
 
-Iterate until the user approves the breakdown.
+No question tool: ask in chat. Iterate until the user approves the breakdown.
+
+Once approved, show the full text of every ticket as it will be published, and every comment and checkbox you will add to an open ticket, then ask for a last yes in the question tool before publishing.
 
 ### 5. Publish the tickets to the configured tracker
 
@@ -64,7 +85,13 @@ Publish the approved tickets. **How** depends on the tracker `/setup-matt-pocock
 
 Work the **frontier**: any ticket whose blockers are all done. For a purely linear chain that means top to bottom.
 
-Do NOT close or modify any parent issue.
+Touch existing tickets (the parent included) only as approved in the quiz, through the tracker doc's operations:
+
+- **Joins #N**: add the ticket's acceptance criteria to #N as checkboxes; publish no ticket of its own.
+- **Blocked by #N**: set the native blocking edge to #N.
+- **Closed as superseded**: comment with the link to the ticket that replaces it, then close it.
+- **Narrowed**: comment with what left it and the link to where it went.
+- **Unchanged**: leave it alone.
 
 <local-ticket-template>
 
