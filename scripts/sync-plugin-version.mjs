@@ -14,7 +14,8 @@ const { version } = JSON.parse(readFileSync(join(repo, "package.json"), "utf8"))
 const source = readFileSync(pluginPath, "utf8");
 const plugin = JSON.parse(source);
 
-if (plugin.version === version) {
+// Davide's fork: plugin.json carries package.json's version plus a -davide.N suffix.
+if (plugin.version.replace(/-davide\.\d+$/, "") === version) {
   console.log(`plugin.json version is ${version} (already in sync)`);
   process.exit(0);
 }
