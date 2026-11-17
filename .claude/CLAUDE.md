@@ -7,6 +7,8 @@ Questo è il fork di `mattpocock/skills` che Davide usa come plugin `mattpocock-
   `implement`, `retro`, `triage`, `improve-codebase-architecture`, `teach`, `setup-matt-pocock-skills` (niente
   `disable-model-invocation` né `policy` in `agents/openai.yaml`). Le altre restano user-invoked come da Matt:
   «controllo resta a me». Cambiare l'invocazione di una skill si fa solo col sì di Davide.
+- `chief-of-staff`, che Matt tiene in `in-progress/`, qui sta in `engineering/`, promossa e user-invoked
+  (daviduuuul/home#238): un merge di Matt che la cambia in `in-progress/` si riporta in `engineering/chief-of-staff/`.
 - Ogni modifica nostra alza la versione in `.claude-plugin/plugin.json` col suffisso `-davide.N` (es. `1.3.2-davide.2`):
   Claude Code tiene la cache per versione, e senza il salto i PC restano sulla copia vecchia.
 - Gli aggiornamenti di Matt entrano con `git fetch upstream && git merge upstream/main`, quando Davide lo chiede; nei
