@@ -9,6 +9,12 @@ Questo è il fork di `mattpocock/skills` che Davide usa come plugin `mattpocock-
   «controllo resta a me». Cambiare l'invocazione di una skill si fa solo col sì di Davide.
 - `chief-of-staff`, che Matt tiene in `in-progress/`, qui sta in `engineering/`, promossa e user-invoked
   (daviduuuul/home#238): un merge di Matt che la cambia in `in-progress/` si riporta in `engineering/chief-of-staff/`.
+- `grilling`, `to-spec`, `to-tickets` e `chief-of-staff` fanno le domande nella finestra dell'harness
+  (`AskUserQuestion`), al massimo quattro per volta, la consigliata per prima: divergono apposta da
+  `.out-of-scope/native-question-tool.md` e `question-limits.md` (daviduuuul/home#235). Al merge di Matt vince questo.
+- `chief-of-staff` è scritta per la casa: la memoria è `~/home/memoria` col suo `MEMORY.md` (niente wiki), le regole
+  nei `CLAUDE.md`, le ricerche in `~/home/docs/ricerche/`, le procedure nelle altre skill del plugin. Al merge di Matt
+  vince la nostra.
 - Ogni modifica nostra alza la versione in `.claude-plugin/plugin.json` col suffisso `-davide.N` (es. `1.3.2-davide.2`):
   Claude Code tiene la cache per versione, e senza il salto i PC restano sulla copia vecchia.
 - Gli aggiornamenti di Matt entrano con `git fetch upstream && git merge upstream/main`, quando Davide lo chiede; nei

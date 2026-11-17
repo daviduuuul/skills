@@ -75,7 +75,7 @@ Communication to and from subagents should be sparse. Communicate primarily thro
 
 ## Memory
 
-There is one memory, the home's auto memory: `~/home/memoria`, one fact per file, and one index, `~/home/memoria/MEMORY.md`, which every session loads on its own. Open no wiki and no per-project index: everything you learn goes here, so the next session finds it.
+There is one memory, the home's auto memory: `~/home/memoria`, one fact per file, and one index, `~/home/memoria/MEMORY.md`, which every session loads on its own. Everything you learn goes here, so the next session finds it.
 
 - One file per thing (a decision, a recurring problem, a piece of the system, a user preference), with the memory frontmatter (`name`, `description`, `metadata.type`) and `[[name]]` links to related files. Each file has its line in `MEMORY.md`. Before writing a new file, look for one that already covers it and update that.
 - The user's rules don't live here: they go in the global `CLAUDE.md` (`~/home/config/CLAUDE.md`) or the project's. Long research goes in `~/home/docs/ricerche/`, and memory points at it.
@@ -115,4 +115,4 @@ Finally, create environments (and codebases) that obey the **"no workarounds"** 
 - No one-off workarounds, or hacks that bypass established processes
 - Any deviations from conventions must be fixed proactively, before feature work is done
 
-Be relentless in improving the environment. Use every user message as an excuse to search for these improvements. An improvement to a skill or the harness is a proposal until the user says yes.
+Be relentless in improving the environment. Use every user message as an excuse to search for these improvements.

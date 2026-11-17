@@ -16,15 +16,7 @@ A configured issue tracker, from [setup-matt-pocock-skills](https://aihero.dev/s
 
 ## The startup check
 
-| It finds | It does |
-| --- | --- |
-| A ready ticket whose work is already on the main branch | Closes it, citing the commit |
-| A ready ticket whose work sits on a branch never merged | Tells you, and dispatches nothing on it |
-| An obvious duplicate | Closes it, linking the one that stays |
-| A ticket with no state, or conflicting states | Fixes the labels |
-| Tickets waiting on you | Groups them by the machine they happen on |
-
-Then it proposes an order (deadlines, then active projects, then the rest, with blocking edges deciding inside each) and asks its questions. With no goal it proposes one; with a goal it starts on it. A deep reorder of the whole tracker happens only when you ask.
+The steps of the check are in the skill's `SKILL.md`; what matters to you is that it is a light pass, and a deep reorder of the whole tracker happens only when you ask.
 
 ## What it does alone, and what it asks
 
@@ -36,9 +28,6 @@ Work in progress lives on the tickets themselves: a claim, a comment when work s
 
 **Can it write the spec and tickets for a big new piece of work?**
 No. `to-spec` and `to-tickets` are user-invoked, so no skill can run them. The chief tells you there's a large chunk of work and gives you the `/grill-with-docs` command to run in a fresh session. The tickets that come out of it show up at its next startup check.
-
-**Does it run `retro` on its own?**
-On about one in five of its subagents' sessions, the ones that went wrong first. The candidates come to you as questions, and only the ones you approve get done.
 
 ## It's working if
 

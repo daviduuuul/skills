@@ -85,13 +85,7 @@ Publish the approved tickets. **How** depends on the tracker `/setup-matt-pocock
 
 Work the **frontier**: any ticket whose blockers are all done. For a purely linear chain that means top to bottom.
 
-Touch existing tickets (the parent included) only as approved in the quiz, through the tracker doc's operations:
-
-- **Joins #N**: add the ticket's acceptance criteria to #N as checkboxes; publish no ticket of its own.
-- **Blocked by #N**: set the native blocking edge to #N.
-- **Closed as superseded**: comment with the link to the ticket that replaces it, then close it.
-- **Narrowed**: comment with what left it and the link to where it went.
-- **Unchanged**: leave it alone.
+Touch existing tickets (the parent included) only as approved in the quiz, applying each relation and outcome as step 3 defines it, through the tracker doc's operations. A joining ticket's checkboxes on #N are its acceptance criteria.
 
 <local-ticket-template>
 
