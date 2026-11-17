@@ -11,6 +11,9 @@ Questo è il fork di `mattpocock/skills` che Davide usa come plugin `mattpocock-
   Claude Code tiene la cache per versione, e senza il salto i PC restano sulla copia vecchia.
 - Gli aggiornamenti di Matt entrano con `git fetch upstream && git merge upstream/main`, quando Davide lo chiede; nei
   conflitti vince la nostra modifica, poi si rifà lo sblocco sulle skill nuove e si alza la versione.
+- Queste istruzioni stanno in `.claude/CLAUDE.md` (`AGENTS.md` ci punta), non alla radice: il plugin è il repo intero,
+  e un CLAUDE.md alla radice ci finirebbe dentro e farebbe fallire `claude plugin validate <dir> --strict`. Se un
+  merge di Matt riporta un `CLAUDE.md` alla radice, le sue modifiche passano qui e quello si toglie.
 - Il ramo è `main`, su `origin` (`daviduuuul/skills`). Il resto di questo file sono le regole di Matt, che valgono.
 
 Skills are organized into bucket folders under `skills/`:
