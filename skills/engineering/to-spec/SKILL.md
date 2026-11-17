@@ -12,9 +12,11 @@ The issue tracker and triage label vocabulary should have been provided to you. 
 
 1. Explore the repo to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the spec, and respect any ADRs in the area you're touching.
 
+Read the open tickets on the tracker, listing them the way the tracker's doc says. Note every open ticket the spec duplicates, replaces, narrows, or depends on: the spec names them.
+
 2. Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better - the ideal number is one.
 
-Check with the user that these seams match their expectations.
+Check with the user that these seams match their expectations, through the harness's question tool (`AskUserQuestion` in Claude Code): at most four questions per call, your recommended option first, its label ending in "(Recommended)" in the user's language. What the tool can't show (the seams themselves, what each option costs) goes in chat just above, then the tool opens. No question tool: ask in chat.
 
 3. Write the spec using the template below, then publish it to the project issue tracker. Apply the `ready-for-agent` triage label - no need for additional triage.
 
@@ -67,6 +69,10 @@ A list of testing decisions that were made. Include:
 ## Out of Scope
 
 A description of the things that are out of scope for this spec.
+
+## Open Tickets
+
+Every open ticket this spec touches, and what happens to it: superseded by the spec, narrowed (what leaves it and where it goes), blocking or blocked by the work, or unchanged. "None" when no open ticket is touched.
 
 ## Further Notes
 
