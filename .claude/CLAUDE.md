@@ -22,6 +22,8 @@ Questo è il fork di `mattpocock/skills` che Davide usa come plugin `mattpocock-
 - Queste istruzioni stanno in `.claude/CLAUDE.md` (`AGENTS.md` ci punta), non alla radice: il plugin è il repo intero,
   e un CLAUDE.md alla radice ci finirebbe dentro e farebbe fallire `claude plugin validate <dir> --strict`. Se un
   merge di Matt riporta un `CLAUDE.md` alla radice, le sue modifiche passano qui e quello si toglie.
+- Claude Code installa il plugin dal marketplace di questo fork, non da `claude-plugins-official`, e `scripts/link-skills.sh` qui non si lancia: le skill arrivano dal plugin, e i collegamenti in `~/.claude/skills` le doppierebbero.
+- Una skill che ne chiama un'altra del plugin col Skill tool la nomina col prefisso quando il nome si scontra con una skill di Claude Code: `mattpocock-skills:code-review`, perché senza prefisso può partire la `code-review` di Claude Code, che cerca solo bug.
 - Il ramo è `main`, su `origin` (`daviduuuul/skills`). Il resto di questo file sono le regole di Matt, che valgono.
 
 Skills are organized into bucket folders under `skills/`:

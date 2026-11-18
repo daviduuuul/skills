@@ -28,13 +28,14 @@ Communication to and from subagents should be sparse. Communicate primarily thro
 4. Use a fresh **implementer subagent** for each ticket, each in its own worktree on its own branch. Each implementer subagent:
    - confirms its worktree is based on the integration branch before starting, and resets onto it if not;
    - calls the Skill tool with `tdd` to build the ticket;
-   - merges the integration branch tip into its own branch before reporting done
+   - merges the integration branch tip into its own branch before reporting done;
+   - once its checks pass, fast-forwards the integration branch to its own branch (`git merge --ff-only`) and reports the commit it landed.
 
-5. Once an **implementer subagent** completes, merge its work to the integration branch with a **merger subagent**.
+5. If an implementer's fast-forward failed because the integration branch moved on, merge its work with a **merger subagent**. A ticket that fast-forwarded needs no merger.
 
 6. If this changes the **frontier** of available tickets, kick off more **implementer subagents** to work on the new tickets. This allows for maximum concurrency.
 
-7. Once all tickets are complete, call the Skill tool with `code-review` on the integration branch. Fix all issues raised by the code review in a single fresh **implementer subagent**.
+7. Once all tickets are complete, call the Skill tool with `mattpocock-skills:code-review` on the integration branch. Fix all issues raised by the code review in a single fresh **implementer subagent**.
 
 8. If a draft PR exists, mark it ready for review. Otherwise, resolve each ticket the way the issue tracker closes work, and report the integration branch.
 

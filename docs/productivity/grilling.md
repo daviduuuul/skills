@@ -15,7 +15,7 @@ Typing `/grilling` directly gets you the plain interview and nothing else. Where
 | You aren't working in a working directory | [grill-me](https://aihero.dev/skills-grill-me): the same [session](https://www.aihero.dev/ai-coding-dictionary/session), under a name the agent will never fire by itself |
 | You are in a working directory | [grill-with-docs](https://aihero.dev/skills-grill-with-docs): the same session, and it writes `GLOSSARY.md` and ADRs as it goes |
 | An effort too big to hold in one session | [wayfinder](https://aihero.dev/skills-wayfinder): it charts a map and runs grilling inside the decision tickets |
-| A question that talking cannot settle: how something should look or feel | [prototype](https://aihero.dev/skills-prototype): build the throwaway version, then come back |
+| A question that talking cannot settle: how something should look or feel | [prototype](https://aihero.dev/skills-prototype): the grill sends it to a background sub-agent and keeps asking the other questions until you have tried the variants |
 | A skill of your own that needs an interview | Invoke `/grilling` from it, rather than writing another interview |
 
 ## The round, the frontier, and who decides

@@ -35,4 +35,6 @@ Each round the user answers reshapes the tree: settled decisions push the fronti
 
 Finding _facts_ is your job, never the user's. When a frontier question needs a fact from the environment (filesystem, tools, etc.), dispatch a sub-agent with a fresh context window to find it; don't ask the user for anything you could look up yourself. Don't block on it: a running exploration is an unsettled prerequisite, so only the questions downstream of it wait for the sub-agent to report; ask the rest of the frontier now. The _decisions_ are the user's: put each to them and wait.
 
+Some decisions are about how a thing should look or feel, and the user answers them better by trying options than by reading descriptions. For such a question, dispatch a background sub-agent with a fresh context window that calls the Skill tool with `prototype` to build the variants, keep grilling the rest of the frontier, and ask that question once the user has tried them.
+
 The session is done when the frontier is empty: every branch of the design tree visited, nothing left silently assumed. Do not act on it until the user confirms you have reached a shared understanding.
