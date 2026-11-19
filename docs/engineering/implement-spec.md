@@ -28,7 +28,7 @@ Everything lands on one branch. Each implementer:
 1. confirms its worktree is based on the integration branch before it starts,
 2. builds its ticket with [tdd](https://aihero.dev/skills-tdd), red-green one slice at a time,
 3. merges the integration branch tip into its own branch before reporting done, so landing it is a fast-forward,
-4. once its checks pass, makes that fast-forward itself. A merger subagent runs only when the fast-forward fails because another ticket landed first.
+4. once its checks pass, makes that fast-forward itself, pushing its branch onto the integration branch, which is checked out nowhere so the push can land. A merger subagent runs only when the fast-forward fails because another ticket landed first.
 
 The tracker decides whether a pull request exists at all. If your tracker closes work through PRs, or you ask for one, the skill opens a draft PR after the first merge and marks it ready at the end. Otherwise the run stops on the integration branch with every ticket resolved the way your tracker closes work, which works fully offline against a local markdown tracker.
 

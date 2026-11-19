@@ -23,13 +23,13 @@ Communication to and from subagents should be sparse. Communicate primarily thro
 
 2. (optional) Use an **exploration subagent** to conduct any exploration required by the tickets - relevant codebase files or external documentation. Ensure the exploration subagent can save files - it should save its markdown notes in a directory outside the repo, accessible by all future subagents. This lets **implementer subagents** focus on implementation rather than exploration.
 
-3. Create the integration branch. If the issue tracker closes work through PRs, or the user asks for one, open a draft PR after the first merge in step 5 (a branch with no commits ahead of main can't open one), marked as closing the spec and tickets.
+3. Create the integration branch and leave it checked out nowhere: a worktree that has it checked out makes the implementers' landing push fail. If the issue tracker closes work through PRs, or the user asks for one, open a draft PR after the first merge in step 5 (a branch with no commits ahead of main can't open one), marked as closing the spec and tickets.
 
 4. Use a fresh **implementer subagent** for each ticket, each in its own worktree on its own branch. Each implementer subagent:
    - confirms its worktree is based on the integration branch before starting, and resets onto it if not;
    - calls the Skill tool with `tdd` to build the ticket;
    - merges the integration branch tip into its own branch before reporting done;
-   - once its checks pass, fast-forwards the integration branch to its own branch (`git merge --ff-only`) and reports the commit it landed.
+   - once its checks pass, fast-forwards the integration branch to its own branch (`git push . HEAD:<integration-branch>`, which refuses anything but a fast-forward) and reports the commit it landed.
 
 5. If an implementer's fast-forward failed because the integration branch moved on, merge its work with a **merger subagent**. A ticket that fast-forwarded needs no merger.
 

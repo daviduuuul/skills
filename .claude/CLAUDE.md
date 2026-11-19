@@ -20,7 +20,12 @@ Questo è il fork di `mattpocock/skills` che Davide usa come plugin `mattpocock-
   nei `CLAUDE.md`, le ricerche in `~/home/docs/ricerche/`, le procedure nelle altre skill del plugin. Al merge di Matt
   vince la nostra.
 - Ogni modifica nostra alza la versione in `.claude-plugin/plugin.json` col suffisso `-davide.N` (es. `1.3.2-davide.2`):
-  Claude Code tiene la cache per versione, e senza il salto i PC restano sulla copia vecchia.
+  Claude Code tiene la cache per versione, e senza il salto i PC restano sulla copia vecchia. Il salto si fa una volta per
+  push su main: nei ticket di una spec, il salto e la voce qui li fa chi chiude il giro, non ogni ticket.
+- La prova di una skill qui è `npm run check` (validate, versione, lineette lunghe), che gira anche al pre-commit da
+  `scripts/git-hooks/pre-commit`: per i testi delle skill sta al posto di `tdd`.
+- `implement-spec` lascia il ramo d'integrazione aperto in nessuna cartella, e gli aiutanti ci atterrano con
+  `git push . HEAD:<ramo>`, che accetta solo un fast-forward (retro del 19/11/2026). Al merge di Matt vince la nostra.
 - Gli aggiornamenti di Matt entrano con `git fetch upstream && git merge upstream/main`, quando Davide lo chiede; nei
   conflitti vince la nostra modifica, poi si rifà lo sblocco sulle skill nuove e si alza la versione.
 - Queste istruzioni stanno in `.claude/CLAUDE.md` (`AGENTS.md` ci punta), non alla radice: il plugin è il repo intero,

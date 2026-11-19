@@ -1,0 +1,3 @@
+#!/bin/sh
+# Lanciato dallo smistatore degli hook della casa (core.hooksPath).
+exec npm run -s check
