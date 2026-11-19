@@ -38,7 +38,7 @@ Sessions grow too long when you try to talk through an ungrillable question. The
 
 ## It's working if
 
-- The first thing it says is a readback of your idea, and you correct it at least once before the questions start.
+- The first thing it says is a readback of your idea, and the questions start only once you have called it right or corrected it.
 - You disagree with something. A session with no pushback from you is a session you didn't need.
 - Questions arrive in a few rounds, not one at a time for a long time, and later rounds clearly build on what you said earlier.
 - You end up somewhere you didn't expect, because a question showed you a decision you had been making without noticing.

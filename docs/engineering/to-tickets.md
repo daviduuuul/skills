@@ -43,13 +43,13 @@ Under the list come the open tickets it touches, each with an outcome: **closed 
 
 ## Only work that starts now
 
-A ticket nobody starts is debt: it sits on the tracker, waits on someone, and gets closed unbuilt weeks later. `to-tickets` cuts the slices with three rules against that:
+A ticket nobody starts is debt: it sits on the tracker, waits on someone, and gets closed unbuilt weeks later. `to-tickets` sorts every piece of the plan into one of four cases against that:
 
 | Piece of the plan | What happens |
 | --- | --- |
 | Nobody will start it now | No ticket. The quiz lists it as **dropped**, and you decide |
 | It waits on a taste choice of yours (a look, a tone, a direction) | No ticket. The quiz names the missing choice and sends you back to the grill to make it |
-| The agent can do it itself | No `ready-for-human` ticket. The quiz lists it under **agent steps**, and the agent does it after your yes |
+| The agent can do it itself | No `ready-for-human` ticket. The quiz lists it under **agent steps**; after your yes it goes into the agent ticket it belongs to, or into a `ready-for-agent` ticket of its own |
 | Only you can do it | A `ready-for-human` ticket, grouped the way your tracker config says |
 
 ## Blocking edges

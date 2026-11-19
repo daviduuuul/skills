@@ -2,7 +2,7 @@
 
 `chief-of-staff` turns one long [session](https://www.aihero.dev/ai-coding-dictionary/session) into the person who carries a goal forward through the tickets on your issue tracker. It does the work through [subagents](https://www.aihero.dev/ai-coding-dictionary/subagent), each started with a fresh [context window](https://www.aihero.dev/ai-coding-dictionary/context-window), and keeps its own window for deciding what comes next.
 
-It never starts work cold. Before anything else it runs a **startup check** on the tracker: what's open and blocked, what git shows is already done, which tickets duplicate each other or have no clear state, and what order to go in. It also flags the tracker's debt: ideas that never started, steps waiting on you that sit outside their machine's ticket or that an agent could do, and chains stalled on a choice of yours. Every operation on tickets comes from your tracker doc, so the same skill works on a GitHub tracker and on local ticket files.
+It never starts work cold. Before anything else it runs a **startup check** on the tracker: what's open and blocked, what git shows is already done, which tickets duplicate each other or have no clear state, and what order to go in. It also flags the tracker's debt: ideas that never started and have sat idle for two weeks, steps waiting on you that sit outside the ticket for the machine they happen on or that an agent could do, and chains stalled on a choice of yours. Every operation on tickets comes from your tracker doc, so the same skill works on a GitHub tracker and on local ticket files.
 
 ## When to reach for it
 
@@ -22,8 +22,8 @@ The debt it flags comes back as one list among its questions, each ticket with a
 
 | Debt | Proposed move |
 | --- | --- |
-| An idea that never started | Close it |
-| A step of yours outside its machine's ticket, or one an agent could do | Move it into that machine's ticket, or let an agent do it |
+| An idea that never started, idle for two weeks and outside any spec in progress | Close it |
+| A step of yours outside the ticket for the machine it happens on, or one an agent could do | Move it into that ticket, or let an agent do it |
 | A chain stalled on your choice | Make the choice now |
 
 You decide each move; it makes none of them alone.

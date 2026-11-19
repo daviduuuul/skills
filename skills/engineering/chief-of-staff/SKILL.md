@@ -24,11 +24,11 @@ Run it as soon as you start, before anything else. It is a light pass, not a reo
 3. Find obvious duplicates, tickets with no triage state, and tickets whose states conflict.
 4. Group the tickets waiting on the user by the machine or place they happen on.
 5. Flag the tracker's debt, each ticket with the move you propose:
-   - **Ideas never started**: no claim, no commit, no branch, and no ticket waits on it. Propose closing it.
-   - **Stray user steps**: a step waiting on the user that sits outside its machine's ticket, or that an agent could do itself. Propose moving it into that machine's ticket, or having an agent do it.
+   - **Ideas never started**: no claim, no commit, no branch, no activity for two weeks, no ticket waits on it, and not part of a spec still in progress. Propose closing it.
+   - **Stray user steps**: a step waiting on the user that sits outside the ticket for the machine it happens on, grouped the way the tracker's doc says, or that an agent could do itself. Propose moving it into that ticket, or having an agent do it.
    - **Stalled chains**: tickets blocked on a choice only the user can make. Propose making the choice now, in this check's questions.
 6. Propose an order: deadlines first, then the projects memory marks as active, then the rest. Inside each, blocking edges decide. There are no priority labels.
-7. Report the proposed order and what you closed or fixed, with links, then put your questions to the user. The debt goes among them as one list with your proposal per ticket: the user decides each move.
+7. Report the proposed order and what you closed or fixed, with links, then put your questions to the user. The debt flags go among the questions; the user decides each move.
 
 With no goal given, propose a goal and an order, and wait for the user's pick. With a goal, run the startup check, then start on it.
 

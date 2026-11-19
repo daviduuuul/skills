@@ -13,13 +13,9 @@ Questo è il fork di `mattpocock/skills` che Davide usa come plugin `mattpocock-
 - `grilling`, `to-spec`, `to-tickets` e `chief-of-staff` fanno le domande nella finestra dell'harness
   (`AskUserQuestion`), al massimo quattro per volta, la consigliata per prima: divergono apposta da
   `.out-of-scope/native-question-tool.md` e `question-limits.md` (daviduuuul/home#235). Al merge di Matt vince questo.
-- Il flusso di daviduuuul/home#264. `grilling` (e quindi `grill-me` e `grill-with-docs`) apre col riassunto da
-  confermare, scrive corto, spiega le opzioni tecniche con cosa cambiano per l'utente, chiude il gusto nel grill e
-  finisce col riepilogo con le parole dell'utente. `to-spec` lega ogni storia e decisione alla sua Q e mostra la spec
-  intera prima di pubblicarla. `to-tickets` fa ticket solo per il lavoro che parte: i pezzi che non partono cadono,
-  nessun ticket aspetta una scelta di gusto, i passi che l'agente può fare li fa lui dopo il sì. `chief-of-staff` nel
-  Controllo d'avvio segnala idee mai partite, passi dell'utente sparsi e catene ferme, ognuno con la mossa proposta.
-  Al merge di Matt vince la nostra.
+- Il flusso di daviduuuul/home#264: `grilling` (e quindi `grill-me` e `grill-with-docs`) apre e chiude con un riassunto
+  da confermare, `to-spec` lega storie e decisioni alle Q, `to-tickets` fa ticket solo per il lavoro che parte,
+  `chief-of-staff` segnala nel Controllo d'avvio il debito del tracker. Al merge di Matt vince la nostra.
 - `chief-of-staff` è scritta per la casa: la memoria è `~/home/memoria` col suo `MEMORY.md` (niente wiki), le regole
   nei `CLAUDE.md`, le ricerche in `~/home/docs/ricerche/`, le procedure nelle altre skill del plugin. Al merge di Matt
   vince la nostra.

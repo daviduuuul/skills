@@ -41,7 +41,7 @@ Only work that starts now becomes a ticket:
 
 - A piece of the plan that nobody will start now becomes no ticket. It goes on the **dropped** list in the quiz, and nowhere else.
 - No ticket waits on a taste choice from the user (a look, a tone, which direction to try). When the plan is missing one, the quiz names it and sends it back to the grill: slice again once the choice is made.
-- A step the agent can do itself goes on the **agent steps** list, which the agent does after the user's yes: folded into the agent ticket it belongs to, or done right after publishing. Only the gestures the agent cannot make become `ready-for-human` tickets, grouped the way the tracker's doc says.
+- A step the agent can do itself goes on the **agent steps** list; after the user's yes in the quiz, it folds into the agent ticket it belongs to, or becomes a `ready-for-agent` ticket of its own. Only the gestures the agent cannot make become `ready-for-human` tickets, grouped the way the tracker's doc says.
 
 Give each ticket its **blocking edges**: the other tickets that must complete before it can start. A ticket with no blockers can start immediately.
 
@@ -69,7 +69,7 @@ Present the proposed breakdown in chat as a numbered list. For each ticket, show
 - **Blocked by**: which other tickets (if any) must complete first
 - **What it delivers**: the end-to-end behaviour this ticket makes work
 
-Below it, list the touched open tickets, each with its outcome, then the **dropped** pieces, the **agent steps** ("the agent does it after your yes"), and any missing taste choice.
+Below it, list the touched open tickets, each with its outcome, then the **dropped** pieces, the **agent steps** (each with the agent ticket it folds into, or "own `ready-for-agent` ticket"), and any missing taste choice.
 
 Then ask through the harness's question tool (`AskUserQuestion` in Claude Code), at most four questions per call, your recommended option first, its label ending in "(Recommended)" in the user's language:
 

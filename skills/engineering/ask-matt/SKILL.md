@@ -53,7 +53,7 @@ A starting situation that generates work, then merges onto the main flow.
 
   When the map clears, **it hands off, it doesn't build**: merge onto the main flow at **`/to-spec`**, which collapses the map's linked decisions into a buildable plan, then `/to-tickets` and `/implement` as usual. Looping the map straight into `/implement` skips that collapse and throws the linked detail away, so go straight to `/implement` only when the effort turned out genuinely small.
 
-- **Many open tickets and a long-running goal** → **`/chief-of-staff`**. One long session that works the project's issue tracker through subagents. It opens with a **startup check** (what's blocked, what git shows is already done, duplicates, a proposed order), builds ready tickets with `/implement-spec`, runs `/retro` on some of its subagents, and hands large new work back to you as a `/grill-with-docs` to run in a fresh session.
+- **Many open tickets and a long-running goal** → **`/chief-of-staff`**. One long session that works the project's issue tracker through subagents. It opens with a **startup check** (what's blocked, what git shows is already done, duplicates, a proposed order) that also flags the tracker's debt for you to decide: ideas never started, stray user steps, stalled chains. It builds ready tickets with `/implement-spec`, runs `/retro` on some of its subagents, and hands large new work back to you as a `/grill-with-docs` to run in a fresh session.
 
 ## Codebase health
 

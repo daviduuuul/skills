@@ -14,7 +14,7 @@ Work the tree in **rounds**. The **frontier** is every decision whose prerequisi
 Ask through the harness's question tool (`AskUserQuestion` in Claude Code), not in chat prose:
 
 - At most four questions per call. A bigger frontier takes several calls in the same round.
-- Number each question across the session (Q1, Q2, …) and give it concrete options, your recommended answer first, its label ending in "(Recommended)" in the user's language.
+- Number each question across the session (Q1, Q2, …) and give it concrete options that start from what the user has said, your recommended answer first, its label ending in "(Recommended)" in the user's language.
 - A technical question stays the user's to decide. Each of its options says what it changes for them (cost, time, risk, what they will have to do by hand) in plain words; a term of art gets a plain gloss or stays out.
 - When a question needs more than the tool can show (background, trade-offs, what each option costs), write that in chat first, under the question's number, then open the tool.
 - Keep the chat text above the tool short, in small blocks of two or three lines: the user reads it in pieces.

@@ -16,7 +16,7 @@ The issue tracker and triage label vocabulary should have been provided to you. 
 
 Check with the user that these seams match their expectations, through the harness's question tool (`AskUserQuestion` in Claude Code): at most four questions per call, your recommended option first, its label ending in "(Recommended)" in the user's language. What the tool can't show (the seams themselves, what each option costs) goes in chat just above, then the tool opens. No question tool: ask in chat.
 
-3. Write the spec using the template below. When the conversation held a grilling session, its questions are numbered (Q1, Q2, …): end every user story and every implementation decision with the numbers of the questions that settled it, like `(Q3)` or `(Q3, Q7)`. A story or decision that no answer settles must rest on something you found in the codebase or the tracker; anything else is invented, so cut it.
+3. Write the spec using the template below. When the conversation held a grilling session, its questions are numbered (Q1, Q2, …): end every user story and every implementation decision with the numbers of the questions that settled it, like `(Q3)` or `(Q3, Q7)`.
 
 4. Show the user the whole spec in chat, then ask through the question tool whether to publish it, "publish" as the recommended option. A correction rewrites the spec and shows it again in full. On the user's yes, publish it to the project issue tracker and apply the `ready-for-agent` triage label - no need for additional triage.
 
