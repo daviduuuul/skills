@@ -3,8 +3,9 @@
 Questo è il fork di `mattpocock/skills` che Davide usa come plugin `mattpocock-skills@mattpocock` (la fonte in
 `~/home/config/settings.json`, `extraKnownMarketplaces.mattpocock`). Le differenze da Matt:
 
-- Sette skill che Matt riserva all'utente qui sono model-invoked, scelte da Davide il 17/11/2026: `implement-spec`,
-  `implement`, `retro`, `triage`, `improve-codebase-architecture`, `teach`, `setup-matt-pocock-skills` (niente
+- Otto skill che Matt riserva all'utente qui sono model-invoked, scelte da Davide il 17/11/2026: `implement-spec`,
+  `implement`, `retro`, `triage`, `improve-codebase-architecture`, `teach`, `setup-matt-pocock-skills`, e `handoff`
+  dal 19/11/2026 (niente
   `disable-model-invocation` né `policy` in `agents/openai.yaml`). Le altre restano user-invoked come da Matt:
   «controllo resta a me». Cambiare l'invocazione di una skill si fa solo col sì di Davide.
 - `chief-of-staff`, che Matt tiene in `in-progress/`, qui sta in `engineering/`, promossa e user-invoked
