@@ -23,8 +23,12 @@ Run it as soon as you start, before anything else. It is a light pass, not a reo
 2. For each ready ticket (no open blocker), search git for commits and branches that cite it. Work already on the main branch: close the ticket, citing the commit. Work on a branch never merged: tell the user, and dispatch nothing on that ticket until they decide.
 3. Find obvious duplicates, tickets with no triage state, and tickets whose states conflict.
 4. Group the tickets waiting on the user by the machine or place they happen on.
-5. Propose an order: deadlines first, then the projects memory marks as active, then the rest. Inside each, blocking edges decide. There are no priority labels.
-6. Report the proposed order and what you closed or fixed, with links, then put your questions to the user.
+5. Flag the tracker's debt, each ticket with the move you propose:
+   - **Ideas never started**: no claim, no commit, no branch, and no ticket waits on it. Propose closing it.
+   - **Stray user steps**: a step waiting on the user that sits outside its machine's ticket, or that an agent could do itself. Propose moving it into that machine's ticket, or having an agent do it.
+   - **Stalled chains**: tickets blocked on a choice only the user can make. Propose making the choice now, in this check's questions.
+6. Propose an order: deadlines first, then the projects memory marks as active, then the rest. Inside each, blocking edges decide. There are no priority labels.
+7. Report the proposed order and what you closed or fixed, with links, then put your questions to the user. The debt goes among them as one list with your proposal per ticket: the user decides each move.
 
 With no goal given, propose a goal and an order, and wait for the user's pick. With a goal, run the startup check, then start on it.
 
@@ -45,6 +49,7 @@ Only with the user's yes:
 - Change what a ticket delivers.
 - Close as wontfix something the user asked for.
 - Open tickets for your own ideas.
+- Make a debt move from the startup check: close an idea, move a user step, hand it to an agent.
 - Change a skill or the harness (config, hooks, `CLAUDE.md`, agent instructions). Show the change and explain it before making it.
 
 ## Work in progress
