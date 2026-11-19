@@ -4,6 +4,8 @@
 
 It does not ask one question at a time, and it does not ask everything at once. Each **round** asks the whole **frontier**: every decision whose prerequisites are already settled, and nothing else. Two questions never share a round if one depends on the other; a question that hinges on an answer still open belongs to a later round. Your answers settle decisions, the frontier moves outward, and the next round asks what that unblocked. Thirteen questions typically land in about three rounds rather than thirteen.
 
+The first thing you see is not a question. It is a **readback**: a few lines saying what the agent understood you want, why, and how you will know it is done. You answer "right" or correct it, and each correction gets a fresh readback. No round starts until the readback is right, so the questions grow from your goal rather than from the agent's first guess at it.
+
 ## When to reach for it
 
 Type `/grilling`, or the [agent](https://www.aihero.dev/ai-coding-dictionary/agent) reaches for it on its own when a task fits. It is the only [skill](https://www.aihero.dev/ai-coding-dictionary/skill) in the grilling family that is model-invoked, so you rarely type it. Usually a skill you *did* type runs it for you.
@@ -26,7 +28,7 @@ The **design tree** is the model of the subject: decisions with decisions hangin
 
 Before the first round, the agent reads the open tickets on your issue tracker, listed the way your tracker config says, so the tree starts from the work already filed: a decision an open ticket settles is not asked again, and a question that touches an open ticket names it.
 
-A round goes through the harness's question tool (`AskUserQuestion` in Claude Code): up to four numbered questions per call, each with concrete options and the agent's recommendation first, marked "(Recommended)". A frontier bigger than four takes several calls. Anything too long for the tool (background, trade-offs) is written in chat just above, under the question's number, before the tool opens.
+A round goes through the harness's question tool (`AskUserQuestion` in Claude Code): up to four numbered questions per call, each with concrete options and the agent's recommendation first, marked "(Recommended)". A frontier bigger than four takes several calls. Anything too long for the tool (background, trade-offs) is written in chat just above, under the question's number, in small blocks of two or three lines, before the tool opens.
 
 Where the harness has no question tool, the round comes in chat in a fixed format: numbered and titled behind a `❓`, then the body, then the agent's recommended answer alone on a `➡️` line. This format lets you answer a round by number ("1 yes, 2 the second option, 3 no, here's why") instead of by quoting questions back. The chat format has one known problem. The recommendation sometimes argues *against* the question as it was worded, so agreeing with the recommendation means answering "no" to the question. When that happens, answer the recommendation and say so.
 
@@ -78,8 +80,9 @@ This is a real bug, still unfixed, and users report it across [harnesses](https:
 
 ## It's working if
 
+- It opens with a short readback of what you want, why, and when it is done, and asks nothing else until you call it right.
 - It reads the open tickets before the first question, and no question re-asks what an open ticket already settles.
-- A round arrives in the question tool, at most four numbered questions per call, the recommended option first; any long explanation sits in chat just above. Without a question tool, it arrives as a numbered list with each recommendation on a separate `➡️` line.
+- A round arrives in the question tool, at most four numbered questions per call, the recommended option first; any explanation sits in chat just above, in short blocks you can read one at a time. Without a question tool, it arrives as a numbered list with each recommendation on a separate `➡️` line.
 - Nothing in a round needs another question in the same round answered first.
 - Later rounds ask things the first round could not have asked.
 - It goes and looks facts up (reading files, dispatching a sub-agent) rather than asking you something it could have found out.

@@ -7,6 +7,8 @@ Interview the user relentlessly until you reach a shared understanding. Map this
 
 Before the first question, read the open tickets on the project's issue tracker, listing them the way the tracker's doc says (`docs/agents/issue-tracker.md` or wherever the tracker config lives). Start the tree from the work already there: what an open ticket already settles is a fact, not a question, and a decision that would duplicate, replace, or extend an open ticket names it. No tracker configured: skip this.
 
+Open with a **readback**, before any round: a few lines, in the user's own words, saying what they want, why, and how they will know it is done. Put it to them through the question tool with two options, "right" and "let me correct it", labelled in the user's language. A correction earns a new readback, not a question. The first round waits for "right".
+
 Work the tree in **rounds**. The **frontier** is every decision whose prerequisites are already settled: the questions you can ask _now_ without guessing at answers you haven't heard yet. Ask the whole frontier in one round, then wait for the user's answers before the next round.
 
 Ask through the harness's question tool (`AskUserQuestion` in Claude Code), not in chat prose:
@@ -14,6 +16,7 @@ Ask through the harness's question tool (`AskUserQuestion` in Claude Code), not 
 - At most four questions per call. A bigger frontier takes several calls in the same round.
 - Number each question across the session (Q1, Q2, …) and give it concrete options, your recommended answer first, its label ending in "(Recommended)" in the user's language.
 - When a question needs more than the tool can show (background, trade-offs, what each option costs), write that in chat first, under the question's number, then open the tool.
+- Keep the chat text above the tool short, in small blocks of two or three lines: the user reads it in pieces.
 
 If the harness has no question tool, ask the round in chat instead, formatted like so:
 

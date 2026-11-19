@@ -65,6 +65,7 @@ Nobody is happy with the name. There is an open suggestion to rename it `grill-d
 
 ## It's working if
 
+- It opens with a readback of the change you want, and asks nothing until you call it right.
 - `GLOSSARY.md` changes *during* the session, term by term, rather than appearing in one lump at the end.
 - The glossary reads as pure vocabulary (your project's words with tight definitions) and contains no implementation detail or spec-like prose.
 - Questions the codebase can answer get answered by reading the codebase, not asked of you.
