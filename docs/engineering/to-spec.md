@@ -27,6 +27,8 @@ The spec exists because context windows end. You settled many things while [gril
 
 So the spec does not validate or decide anything. It records what you decided, in your project's own vocabulary, so a fresh session can pick up the work without you explaining it again. If the spec states something you never said, that is a defect.
 
+After a grilling session, every user story and every implementation decision ends with the number of the question that settled it, like `(Q3)`. That makes the record traceable: you can check any line against the answer you gave, and a line with no answer behind it has to rest on something found in the codebase or the tracker. Before anything is published, `to-spec` shows you the whole spec in chat and waits for your yes in the question tool. A correction gets a rewritten spec, shown again in full.
+
 ## Seams before prose
 
 Before it writes anything, `to-spec` sketches the **seams** where the feature will be tested, and checks them with you through the harness's question tool (`AskUserQuestion` in Claude Code), with the seams laid out in chat just above. It prefers existing seams to new ones, and picks the highest seam it can. The ideal number of seams for a change is one.
@@ -48,7 +50,7 @@ Often you should. The spec is worth its step only on multi-session work. Its val
 Give it the main map issue, `/to-spec #<map_issue>`, not the individual decision tickets. [wayfinder](https://aihero.dev/skills-wayfinder) produces decisions spread across a map, not deliverables. `to-spec` collapses them into one document you can build from. If you loop the map straight into `/implement`, you lose that step.
 
 **Is the spec for me to review, or is it just for the agent?**
-Mostly for the agent, and it reads that way: complete, dense, and full of references. Read the seams and the out-of-scope section. In those two places, a wrong decision is cheapest to catch now and most expensive to find later. People do complain about reading the whole thing, and there is no summary mode. But if the spec surprises you, the grilling was too shallow; the spec is not too long.
+Mostly for the agent, and it reads that way: complete, dense, and full of references. You still approve it: `to-spec` shows it in full and publishes only after your yes. Read the seams and the out-of-scope section first. In those two places, a wrong decision is cheapest to catch now and most expensive to find later. The `(Q3)` references let you check a line against your own answer without rereading the thread. There is no summary mode, and if the spec surprises you, the grilling was too shallow; the spec is not too long.
 
 **Do I keep the spec frozen once tickets start, or let the agent rewrite it?**
 Nothing keeps it in sync. In practice it is a snapshot of what you knew at that moment, and it goes out of date the first time implementation teaches you something. Treat it as disposable after the work ships. Your `GLOSSARY.md` and ADRs are the files meant to last. If you learn something during implementation that should last, put it there, not in an edited spec.
@@ -69,6 +71,8 @@ A tracker issue may not return a very large spec in full, and there is no local 
 - The Open Tickets section names every open ticket the spec touches, or says none.
 - It uses your project's nouns, not generic product-management boilerplate.
 - You remember making every decision in it. It invented nothing to fill a section.
+- After a grilling session, each user story and decision carries the question number that settled it, and the answer to that question says the same thing.
+- It shows you the whole spec and waits for your yes before anything lands on the tracker.
 - The out-of-scope section lists real things. The things you refused are usually the most useful lines on the page.
 
 ## Where it fits
