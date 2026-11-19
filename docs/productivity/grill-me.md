@@ -43,6 +43,7 @@ Sessions grow too long when you try to talk through an ungrillable question. The
 - Questions arrive in a few rounds, not one at a time for a long time, and later rounds clearly build on what you said earlier.
 - You end up somewhere you didn't expect, because a question showed you a decision you had been making without noticing.
 - At the end you could defend each choice to someone who wasn't there.
+- The closing recap reads like your own words, and you would sign it as it stands.
 
 ## Common questions
 

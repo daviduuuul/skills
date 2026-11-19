@@ -71,6 +71,7 @@ Nobody is happy with the name. There is an open suggestion to rename it `grill-d
 - Questions the codebase can answer get answered by reading the codebase, not asked of you.
 - You get few or no ADRs, and the ones you get are decisions you would be annoyed to have to argue again.
 - It challenges a word you used because your existing glossary defines it differently.
+- It ends with a recap of your decisions in your own words, which is what you check the spec against afterwards.
 
 ## Where it fits
 
