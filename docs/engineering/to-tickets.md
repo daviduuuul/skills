@@ -28,7 +28,7 @@ A **horizontal** slice ships one layer of the change. Nothing works until every 
 
 This is the rule people break most often. One team ran a 26-ticket stack sliced by layer (corpus, producer, aggregator, selector) and got roughly twenty agent runs per closed ticket, about three quarters of them rework. Their own post-mortem traced every failure class back to the horizontal slicing rather than to the implementations.
 
-Two things happen before anything is published. `to-tickets` looks for prefactoring (the principle "make the change easy, then make the easy change") and orders that work first. Then it presents the breakdown as a numbered list and quizzes you on it through the harness's question tool (`AskUserQuestion` in Claude Code): is the granularity right, are the blocking edges real, should anything merge or split, are the relations to the open tickets right. Once you approve, it shows the full text of every ticket before publishing. Nothing reaches the tracker until you approve, and that quiz is the place to push back.
+Two things happen before anything is published. `to-tickets` looks for prefactoring (the principle "make the change easy, then make the easy change") and orders that work first. Then it presents the breakdown as a numbered list and quizzes you on it through the harness's question tool (`AskUserQuestion` in Claude Code): is the granularity right, are the blocking edges real, should anything merge or split, are the relations to the open tickets right, are the dropped pieces and agent steps right. Once you approve, it shows the full text of every ticket before publishing. Nothing reaches the tracker until you approve, and that quiz is the place to push back.
 
 ## Open tickets
 
@@ -40,6 +40,17 @@ Two things happen before anything is published. `to-tickets` looks for prefactor
 - **Blocked by #N**: it needs open #N first, as a native blocking edge.
 
 Under the list come the open tickets it touches, each with an outcome: **closed as superseded** (a comment links the replacement), **narrowed** (a comment says what left and where it went), or **unchanged**. You approve new and old in the same quiz, and the skill touches an existing ticket, the parent included, only as approved there.
+
+## Only work that starts now
+
+A ticket nobody starts is debt: it sits on the tracker, waits on someone, and gets closed unbuilt weeks later. `to-tickets` cuts the slices with three rules against that:
+
+| Piece of the plan | What happens |
+| --- | --- |
+| Nobody will start it now | No ticket. The quiz lists it as **dropped**, and you decide |
+| It waits on a taste choice of yours (a look, a tone, a direction) | No ticket. The quiz names the missing choice and sends you back to the grill to make it |
+| The agent can do it itself | No `ready-for-human` ticket. The quiz lists it under **agent steps**, and the agent does it after your yes |
+| Only you can do it | A `ready-for-human` ticket, grouped the way your tracker config says |
 
 ## Blocking edges
 
@@ -95,6 +106,8 @@ The skill stops at the artifact, and there is no auto-dispatch mode. Dispatch is
 - Every ticket has an answer to "what can I demo when this is done?", and the answer is behaviour, not a layer.
 - The list comes back to you numbered, with a relation and a "Blocked by" line on each, and the touched open tickets with their outcomes below, before anything is published.
 - You see the full text of every ticket before it is published.
+- Every ticket can start once its blockers close: none waits on an idea for later or on a choice you have not made.
+- Your `ready-for-human` tickets hold only gestures the agent cannot make, and the quiz showed you what it dropped and what the agent will do itself.
 - No open ticket was closed, edited, or commented on unless the quiz approved it.
 - The ticket at the top has no blockers and can be started immediately.
 - Nothing in a ticket body is a file path or a line number, except a snippet a prototype produced.
