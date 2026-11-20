@@ -10,15 +10,14 @@ Questo è il fork di `mattpocock/skills` che Davide usa come plugin `mattpocock-
   «controllo resta a me». Cambiare l'invocazione di una skill si fa solo col sì di Davide.
 - `chief-of-staff`, che Matt tiene in `in-progress/`, qui sta in `engineering/`, promossa e user-invoked
   (daviduuuul/home#238): un merge di Matt che la cambia in `in-progress/` si riporta in `engineering/chief-of-staff/`.
-- `grilling`, `to-spec`, `to-tickets` e `chief-of-staff` fanno le domande nella finestra dell'harness
+- `grilling`, `to-spec` e `to-tickets` fanno le domande nella finestra dell'harness
   (`AskUserQuestion`), al massimo quattro per volta, la consigliata per prima: divergono apposta da
   `.out-of-scope/native-question-tool.md` e `question-limits.md` (daviduuuul/home#235). Al merge di Matt vince questo.
 - Il flusso di daviduuuul/home#264: `grilling` (e quindi `grill-me` e `grill-with-docs`) apre e chiude con un riassunto
-  da confermare, `to-spec` lega storie e decisioni alle Q, `to-tickets` fa ticket solo per il lavoro che parte,
-  `chief-of-staff` segnala nel Controllo d'avvio il debito del tracker. Al merge di Matt vince la nostra.
-- `chief-of-staff` è scritta per la casa: la memoria è `~/home/memoria` col suo `MEMORY.md` (niente wiki), le regole
-  nei `CLAUDE.md`, le ricerche in `~/home/docs/ricerche/`, le procedure nelle altre skill del plugin, il ticket singolo a un agente `implementer` della casa (`~/home/config/agents/`) che chiama `implement`. Al merge di Matt
-  vince la nostra.
+  da confermare, `to-spec` lega storie e decisioni alle Q, `to-tickets` fa ticket solo per il lavoro che parte. Al merge di Matt vince la nostra.
+- `chief-of-staff` è quella di Matt, scelta di Davide del 20/11/2026 («come Matt ha scritto»): pensa a tutto lui, spec e
+  ticket compresi. Nostre solo tre righe: il wiki condiviso è la memoria della casa, niente programmi a orario, la retro
+  tiene solo i cambi che i dati sostengono. Al merge di Matt si prende la sua e si rimettono queste tre.
 - Ogni modifica nostra alza la versione in `.claude-plugin/plugin.json` col suffisso `-davide.N` (es. `1.3.2-davide.2`):
   Claude Code tiene la cache per versione, e senza il salto i PC restano sulla copia vecchia. Il salto si fa una volta per
   push su main: nei ticket di una spec, il salto e la voce qui li fa chi chiude il giro, non ogni ticket.
