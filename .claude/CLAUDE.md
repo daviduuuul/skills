@@ -17,7 +17,7 @@ Questo è il fork di `mattpocock/skills` che Davide usa come plugin `mattpocock-
   da confermare, `to-spec` lega storie e decisioni alle Q, `to-tickets` fa ticket solo per il lavoro che parte,
   `chief-of-staff` segnala nel Controllo d'avvio il debito del tracker. Al merge di Matt vince la nostra.
 - `chief-of-staff` è scritta per la casa: la memoria è `~/home/memoria` col suo `MEMORY.md` (niente wiki), le regole
-  nei `CLAUDE.md`, le ricerche in `~/home/docs/ricerche/`, le procedure nelle altre skill del plugin. Al merge di Matt
+  nei `CLAUDE.md`, le ricerche in `~/home/docs/ricerche/`, le procedure nelle altre skill del plugin, il ticket singolo a un agente `implementer` della casa (`~/home/config/agents/`) che chiama `implement`. Al merge di Matt
   vince la nostra.
 - Ogni modifica nostra alza la versione in `.claude-plugin/plugin.json` col suffisso `-davide.N` (es. `1.3.2-davide.2`):
   Claude Code tiene la cache per versione, e senza il salto i PC restano sulla copia vecchia. Il salto si fa una volta per

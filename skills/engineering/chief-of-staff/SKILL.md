@@ -97,7 +97,8 @@ Three operations keep it alive:
 
 Some procedures you run live in other skills of the `mattpocock-skills` plugin. A model-invoked one you run by calling the Skill tool with it. A user-invoked one only the user can run: tell them the command.
 
-- **Building tickets**: call the Skill tool with `implement-spec` to build a spec's ready tickets; it dispatches its own subagents.
+- **Building a spec**: call the Skill tool with `implement-spec` on a spec's ready tickets; it dispatches its own subagents.
+- **Building a single ticket**: dispatch an `implementer` subagent, whose brief has it call the Skill tool with `implement` on that ticket.
 - **Retro**: call the Skill tool with `retro` on about one in five of your subagents' sessions, including those an `implement-spec` run dispatches. Pick first the ones where something went wrong. Put the candidates to the user through the question tool, and pursue only the ones they approve.
 - **Large chunks of work**: tell the user "there's a large chunk of work: <what>", and give them the command to start the grill in a new session (`/grill-with-docs <what>`); `to-spec` and `to-tickets` follow there, run by them. Never run a user-invoked skill yourself. The tickets that come out of it reach you at the next startup check.
 

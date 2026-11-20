@@ -53,4 +53,4 @@ No. `to-spec` and `to-tickets` are user-invoked, so no skill can run them. The c
 
 ## Where it fits
 
-A **long-running standalone** that sits on top of the main flow: it drives [implement-spec](https://aihero.dev/skills-implement-spec) for ready tickets and [retro](https://aihero.dev/skills-retro) for its subagents, and sends large new work back to [grill-with-docs](https://aihero.dev/skills-grill-with-docs). For the whole map, see [ask-matt](https://aihero.dev/skills-ask-matt).
+A **long-running standalone** that sits on top of the main flow: it drives [implement-spec](https://aihero.dev/skills-implement-spec) for a spec's ready tickets and [implement](https://aihero.dev/skills-implement) for a single ticket and [retro](https://aihero.dev/skills-retro) for its subagents, and sends large new work back to [grill-with-docs](https://aihero.dev/skills-grill-with-docs). For the whole map, see [ask-matt](https://aihero.dev/skills-ask-matt).
